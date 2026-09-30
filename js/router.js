@@ -1,57 +1,60 @@
-/* Cadastre hash router */
+/* Cadastre hash router \u2014 multipage SPA */
 (function (global) {
   const routes = [
-    { name: "survey", re: /^\/?$/ },
-    { name: "survey", re: /^\/survey\/?$/ },
-    { name: "knowledge", re: /^\/map\/?$/ },
-    { name: "parcels", re: /^\/parcels\/?$/ },
-    { name: "parcel", re: /^\/parcel\/([^/]+)\/?$/, params: ["id"] },
-    { name: "rites", re: /^\/rites\/?$/ },
-    { name: "rite", re: /^\/rite\/([^/]+)\/studio\/?$/, params: ["id"], studio: true },
-    { name: "rite", re: /^\/rite\/([^/]+)\/?$/, params: ["id"] },
-    { name: "studio", re: /^\/studio\/?$/ },
-    { name: "chain", re: /^\/chain\/?$/ },
-    { name: "chain", re: /^\/chain\/([^/]+)\/?$/, params: ["objectId"] },
-    { name: "deal", re: /^\/deal\/([^/]+)\/?$/, params: ["id"] }
+    { re: /^\/?$/, name: "survey" },
+    { re: /^\/survey\/?$/, name: "survey" },
+    { re: /^\/map\/?$/, name: "knowledge" },
+    { re: /^\/knowledge\/?$/, name: "knowledge" },
+    { re: /^\/parcels\/?$/, name: "parcels" },
+    { re: /^\/parcel\/([^/]+)\/?$/, name: "parcel", param: "id" },
+    { re: /^\/rites\/?$/, name: "rites" },
+    { re: /^\/rite\/([^/]+)\/studio\/?$/, name: "studio", param: "riteId" },
+    { re: /^\/rite\/([^/]+)\/?$/, name: "rite", param: "id" },
+    { re: /^\/studio\/?$/, name: "studio" },
+    { re: /^\/chain\/?$/, name: "chain" },
+    { re: /^\/chain\/([^/]+)\/?$/, name: "chain", param: "objectId" },
+    { re: /^\/deal\/([^/]+)\/?$/, name: "deal", param: "id" }
   ];
 
-  function parse(hash) {
-    const raw = (hash || "#/survey").replace(/^#/, "") || "/";
-    const path = raw.startsWith("/") ? raw : "/" + raw;
+  function parseHash() {
+    let raw = (location.hash || "#/survey").replace(/^#/, "");
+    if (!raw.startsWith("/")) raw = "/" + raw;
     for (const r of routes) {
-      const m = path.match(r.re);
+      const m = raw.match(r.re);
       if (m) {
         const params = {};
-        (r.params || []).forEach((k, i) => {
-          params[k] = decodeURIComponent(m[i + 1]);
-        });
-        if (r.studio) params.studio = true;
-        return { name: r.name, params, path };
+        if (r.param) params[r.param] = decodeURIComponent(m[1]);
+        return { name: r.name, params, path: raw };
       }
     }
     return { name: "survey", params: {}, path: "/survey" };
   }
 
   function navigate(path) {
-    const p = path.startsWith("/") ? path : "/" + path;
-    if (location.hash === "#" + p) {
-      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    if (!path.startsWith("#")) path = "#" + (path.startsWith("/") ? path : "/" + path);
+    if (location.hash === path) {
+      global.dispatchEvent(new HashChangeEvent("hashchange"));
     } else {
-      location.hash = "#" + p;
+      location.hash = path;
     }
   }
 
-  function current() {
-    return parse(location.hash);
+  function href(path) {
+    return "#" + (path.startsWith("/") ? path : "/" + path);
   }
 
-  function start(onRoute) {
-    const go = () => onRoute(current());
-    window.addEventListener("hashchange", go);
-    if (!location.hash) navigate("/survey");
-    else go();
-    return () => window.removeEventListener("hashchange", go);
+  function pathFor(kind, id) {
+    if (kind === "parcel") return "/parcel/" + id;
+    if (kind === "rite") return "/rite/" + id;
+    if (kind === "deal") return "/deal/" + id;
+    if (kind === "chain") return id ? "/chain/" + id : "/chain";
+    if (kind === "person" || kind === "site") return "/deal/" + (arguments[2] || id);
+    if (kind === "knowledge" || kind === "map") return "/map";
+    if (kind === "parcels") return "/parcels";
+    if (kind === "rites") return "/rites";
+    if (kind === "studio") return "/studio";
+    return "/survey";
   }
 
-  global.CadastreRouter = { parse, navigate, current, start };
+  global.CadastreRouter = { parseHash, navigate, href, pathFor, routes };
 })(window);
