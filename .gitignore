@@ -1,0 +1,5 @@
+# Local / bloat
+research-shots/scout-refs/
+.netlify/
+.DS_Store
+*.zip
