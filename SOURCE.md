@@ -1,18 +1,30 @@
 # Source tree
 
-Full Cadastre SPA source (including Studio) is maintained in-repo:
+## Canonical full source
 
-| Path | Role |
-|------|------|
-| `js/studio.js` | Studio workflow canvas (MEMORY / KNOWLEDGE / RITE / DEPOSIT / EXPORT) |
-| `js/vault.js` | IndexedDB vault, scores, searchIndex |
-| `js/router.js` | Hash routes including `#/studio` |
-| `js/app.js` | Orchestration |
-| `js/graph.js` / `js/knowledge-map.js` | Survey + Map |
-| `js/rites.js` / `js/editions.js` | Rites + title chain |
-| `js/editor.js` / `js/pages.js` | Parcel UI + multipage chrome |
-| `css/main.css` | Visual system + Studio styles |
-| `data/seed.js` | Universal category seed (CRE is one category) |
+The complete Cadastre SPA (including Studio) lives in:
 
-Live: https://chipper-banoffee-49bea3.netlify.app
-Local: `python3 -m http.server 4173` then open `#/studio`
+- Build folder / deploy zip: all of `js/`, `css/`, `data/`, `index.html`
+- Local git commit ready to push: `/tmp/cadastre-git` (needs `gh auth` / token for `git push`)
+- Deploy zip: `/tmp/cadastre-v3.zip`
+
+## Already in this repo
+
+| Path | Status |
+|------|--------|
+| README.md / CONCEPT.md / DEPLOY.md | Full docs |
+| index.html | With Studio nav + `#/studio` host |
+| js/router.js | `#/studio` + `#/rite/:id/studio` |
+| js/editor.js | Stub — full editor in zip |
+| scripts/decode-studio.js | Reconstruct studio.js from b64 parts |
+| scripts/unpack-src.js | Reconstruct source zip from dist/_src_b64 |
+
+## Studio
+
+Route: `#/studio` (also `#/rite/:id/studio`)
+
+Nodes: MEMORY (approve-only) · KNOWLEDGE (searchIndex) · RITE · DEPOSIT (title chain) · EXPORT
+
+Screenshot: `research-shots/cadastre-studio.png` (in zip)
+
+Live: https://chipper-banoffee-49bea3.netlify.app/#/studio
