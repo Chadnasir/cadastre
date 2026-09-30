@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastre — Map the deal. Own the history.</title>
+    <meta name="description" content="Cadastre is a universal knowledge vault: parcels, survey & knowledge map, rites, and title chain — scored, indexed, connected." />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23070B12'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23FF6A00' stroke-width='2'/%3E%3Ccircle cx='16' cy='18' r='2' fill='%23F4EFE6'/%3E%3C/svg%3E" />
+  </head>
+  <body data-page="survey">
+    <div id="boot">
+      <div class="boot-seal" aria-hidden="true"></div>
+      <div class="boot-logo">CADAST<span>RE</span></div>
+      <div id="boot-msg">Opening vault…</div>
+    </div>
+
+    <div id="app">
+      <header class="chrome">
+        <a class="brand" href="#/survey">
+          <div class="brand-mark">CADAST<span>RE</span></div>
+          <div class="brand-tag">Map the deal. Own the history.</div>
+        </a>
+
+        <nav class="mode-switch page-nav" aria-label="Pages">
+          <a class="mode-btn" data-nav="survey" href="#/survey">Survey</a>
+          <a class="mode-btn" data-nav="knowledge" href="#/map">Map</a>
+          <a class="mode-btn" data-nav="parcels" href="#/parcels">Parcels</a>
+          <a class="mode-btn" data-nav="rites" href="#/rites">Rites</a>
+          <a class="mode-btn" data-nav="studio" href="#/studio">Studio</a>
+          <a class="mode-btn" data-nav="chain" href="#/chain">Chain</a>
+        </nav>
+
+        <div class="search-wrap">
+          <input
+            id="global-search"
+            type="search"
+            placeholder="Search vault — scored & indexed…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="search-kbd">⌘K</span>
+          <div id="search-results" hidden></div>
+        </div>
+
+        <div class="chrome-actions">
+          <button type="button" class="btn ghost" id="btn-reseed" title="Reset to full starter vault">Reseed</button>
+        </div>
+      </header>
+
+      <div class="edition-pulse-bar">
+        <button type="button" id="edition-pulse" title="Open title chain">
+          <span class="pulse-dot"></span> Chain · loading…
+        </button>
+        <span id="graph-health" class="graph-health mono"></span>
+      </div>
+
+      <main class="workspace" id="workspace">
+        <aside class="panel panel-left" id="vault-rail"></aside>
+
+        <section class="panel panel-center" id="page-host">
+          <div class="page" id="page-survey" hidden>
+            <div class="canvas-hint">Drag nodes · scroll zoom · double-click reset · shared vault edges</div>
+            <div class="plat-corners" aria-hidden="true">
+              <span class="plat tl"></span><span class="plat tr"></span>
+              <span class="plat bl"></span><span class="plat br"></span>
+            </div>
+            <div class="survey-legend" aria-hidden="true">
+              <span><i class="lg deal"></i>Deal/Project</span>
+              <span><i class="lg parcel"></i>Parcel</span>
+              <span><i class="lg person"></i>Person</span>
+              <span><i class="lg site"></i>Site</span>
+              <span><i class="lg rite"></i>Rite</span>
+            </div>
+            <canvas id="survey-canvas" aria-label="Cadastre survey graph"></canvas>
+          </div>
+          <div class="page page-fill" id="page-knowledge" hidden></div>
+          <div class="page page-scroll" id="page-parcels" hidden></div>
+          <div class="page page-scroll" id="page-parcel" hidden></div>
+          <div class="page page-scroll" id="page-rites" hidden></div>
+          <div class="page page-scroll" id="page-rite" hidden>
+            <div id="rite-studio" class="inspector rite-studio"></div>
+          </div>
+          <div class="page page-scroll" id="page-chain" hidden>
+            <div id="chain-studio" class="inspector chain-studio"></div>
+          </div>
+          <div class="page page-fill" id="page-studio" hidden></div>
+          <div class="page page-scroll" id="page-deal" hidden></div>
+        </section>
+
+        <aside class="panel panel-right" id="inspector-rail">
+          <div class="panel-head"><h2>Context</h2></div>
+          <div id="inspector-entity" class="inspector"></div>
+          <div id="inspector-parcel" class="inspector" hidden></div>
+          <div id="inspector-rite" class="inspector" hidden></div>
+          <div id="inspector-chain" class="inspector" hidden></div>
+        </aside>
+      </main>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data/seed.js"></script>
+    <script src="js/vault.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/graph.js"></script>
+    <script src="js/knowledge-map.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/rites.js"></script>
+    <script src="js/editions.js"></script>
+    <script src="js/studio.js"></script>
+    <script src="js/pages.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
