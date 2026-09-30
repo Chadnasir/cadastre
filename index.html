@@ -22,13 +22,13 @@
           <div class="brand-tag">Map the deal. Own the history.</div>
         </a>
 
-        <nav class="mode-switch page-nav" aria-label="Pages">
-          <a class="mode-btn" data-nav="survey" href="#/survey">Survey</a>
-          <a class="mode-btn" data-nav="knowledge" href="#/map">Map</a>
-          <a class="mode-btn" data-nav="parcels" href="#/parcels">Parcels</a>
-          <a class="mode-btn" data-nav="rites" href="#/rites">Rites</a>
-          <a class="mode-btn" data-nav="studio" href="#/studio">Studio</a>
-          <a class="mode-btn" data-nav="chain" href="#/chain">Chain</a>
+        <nav class="mode-switch page-nav" aria-label="Primary modes" role="navigation">
+          <a class="mode-btn" data-nav="survey" href="#/survey" aria-label="Survey graph">Survey</a>
+          <a class="mode-btn" data-nav="knowledge" href="#/map" aria-label="Knowledge map">Map</a>
+          <a class="mode-btn" data-nav="parcels" href="#/parcels" aria-label="Parcels gallery">Parcels</a>
+          <a class="mode-btn" data-nav="rites" href="#/rites" aria-label="Rites catalog">Rites</a>
+          <a class="mode-btn" data-nav="studio" href="#/studio" aria-label="Studio workflow">Studio</a>
+          <a class="mode-btn" data-nav="chain" href="#/chain" aria-label="Title chain">Chain</a>
         </nav>
 
         <div class="search-wrap">
@@ -38,12 +38,20 @@
             placeholder="Search vault \u2014 scored & indexed\u2026"
             autocomplete="off"
             spellcheck="false"
+            aria-label="Search vault"
+            aria-autocomplete="list"
+            aria-controls="search-results"
           />
           <span class="search-kbd">\u2318K</span>
           <div id="search-results" hidden></div>
         </div>
 
         <div class="chrome-actions">
+          <button type="button" class="btn ghost btn-vault-drawer" id="btn-vault-drawer" title="Open vault" aria-label="Open vault">Vault</button>
+          <button type="button" class="btn ghost" id="btn-help" title="Keyboard shortcuts (?)" aria-label="Keyboard shortcuts">?</button>
+          <button type="button" class="btn ghost" id="btn-export-vault" title="Export full vault JSON">Export</button>
+          <button type="button" class="btn ghost" id="btn-import-vault" title="Import vault JSON (merge or replace)">Import</button>
+          <input type="file" id="import-vault-file" accept="application/json,.json" hidden />
           <button type="button" class="btn ghost" id="btn-reseed" title="Reset to full starter vault">Reseed</button>
         </div>
       </header>
@@ -55,13 +63,15 @@
         <span id="graph-health" class="graph-health mono"></span>
       </div>
 
+      <div id="vault-backdrop" class="vault-backdrop" hidden></div>
+      <button type="button" class="btn-vault-close" id="btn-vault-close" aria-label="Close vault" hidden>\u00d7</button>
       <main class="workspace" id="workspace">
         <aside class="panel panel-left" id="vault-rail"></aside>
 
         <section class="panel panel-center" id="page-host">
           <!-- Survey -->
           <div class="page" id="page-survey" hidden>
-            <div class="canvas-hint">Drag nodes \u00b7 scroll zoom \u00b7 double-click reset \u00b7 shared vault edges</div>
+            <div class="canvas-hint">Drag \u00b7 Alt+click pin \u00b7 scroll zoom \u00b7 search rings \u00b7 double-tap reset \u00b7 ? shortcuts</div>
             <div class="plat-corners" aria-hidden="true">
               <span class="plat tl"></span><span class="plat tr"></span>
               <span class="plat bl"></span><span class="plat br"></span>
@@ -127,6 +137,7 @@
     <script src="js/editions.js"></script>
     <script src="js/studio.js"></script>
     <script src="js/pages.js"></script>
+    <script src="js/chrome-v6.js"></script>
     <script src="js/app.js"></script>
   </body>
 </html>
