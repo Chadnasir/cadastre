@@ -1,5 +1,10 @@
 # Local / bloat
 research-shots/scout-refs/
+research-shots/*-01.png
+research-shots/*-01.jpg
+research-shots/*-01.webp
+research-shots/*-01.gif
+research-shots/*-01.jpeg
 .netlify/
 .DS_Store
 *.zip

@@ -103,8 +103,8 @@ No build step. Static SPA; Netlify `_redirects` / `netlify.toml` for SPA fallbac
 
 ## Deploy
 
-- **Live site:** https://chipper-banoffee-49bea3.netlify.app  
-- Netlify site id: `f118c332-93c0-46e8-b054-9d56979a3ae6` (chipper-banoffee)  
+- **Live site:** https://chipper-banoffee-49bea3.netlify.app
+- Netlify site id: `f118c332-93c0-46e8-b054-9d56979a3ae6` (chipper-banoffee)
 - Absolute (`315114ef-…`) must remain untouched.
 
 ## Roadmap gaps
