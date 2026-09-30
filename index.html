@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cadastre — Map the deal. Own the history.</title>
-    <meta name="description" content="Cadastre is a universal knowledge vault: parcels, survey & knowledge map, rites, and title chain — scored, indexed, connected." />
+    <title>Cadastre \u2014 Map the deal. Own the history.</title>
+    <meta name="description" content="Cadastre is a universal knowledge vault: parcels, survey & knowledge map, rites, and title chain \u2014 scored, indexed, connected." />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23070B12'/%3E%3Cpath d='M8 22 L16 8 L24 22 Z' fill='none' stroke='%23FF6A00' stroke-width='2'/%3E%3Ccircle cx='16' cy='18' r='2' fill='%23F4EFE6'/%3E%3C/svg%3E" />
   </head>
@@ -12,7 +12,7 @@
     <div id="boot">
       <div class="boot-seal" aria-hidden="true"></div>
       <div class="boot-logo">CADAST<span>RE</span></div>
-      <div id="boot-msg">Opening vault…</div>
+      <div id="boot-msg">Opening vault\u2026</div>
     </div>
 
     <div id="app">
@@ -35,11 +35,11 @@
           <input
             id="global-search"
             type="search"
-            placeholder="Search vault — scored & indexed…"
+            placeholder="Search vault \u2014 scored & indexed\u2026"
             autocomplete="off"
             spellcheck="false"
           />
-          <span class="search-kbd">⌘K</span>
+          <span class="search-kbd">\u2318K</span>
           <div id="search-results" hidden></div>
         </div>
 
@@ -50,7 +50,7 @@
 
       <div class="edition-pulse-bar">
         <button type="button" id="edition-pulse" title="Open title chain">
-          <span class="pulse-dot"></span> Chain · loading…
+          <span class="pulse-dot"></span> Chain \u00b7 loading\u2026
         </button>
         <span id="graph-health" class="graph-health mono"></span>
       </div>
@@ -59,8 +59,9 @@
         <aside class="panel panel-left" id="vault-rail"></aside>
 
         <section class="panel panel-center" id="page-host">
+          <!-- Survey -->
           <div class="page" id="page-survey" hidden>
-            <div class="canvas-hint">Drag nodes · scroll zoom · double-click reset · shared vault edges</div>
+            <div class="canvas-hint">Drag nodes \u00b7 scroll zoom \u00b7 double-click reset \u00b7 shared vault edges</div>
             <div class="plat-corners" aria-hidden="true">
               <span class="plat tl"></span><span class="plat tr"></span>
               <span class="plat bl"></span><span class="plat br"></span>
@@ -74,17 +75,33 @@
             </div>
             <canvas id="survey-canvas" aria-label="Cadastre survey graph"></canvas>
           </div>
+
+          <!-- Knowledge map -->
           <div class="page page-fill" id="page-knowledge" hidden></div>
+
+          <!-- Parcels gallery -->
           <div class="page page-scroll" id="page-parcels" hidden></div>
+
+          <!-- Parcel editor full page -->
           <div class="page page-scroll" id="page-parcel" hidden></div>
+
+          <!-- Rites catalog -->
           <div class="page page-scroll" id="page-rites" hidden></div>
+
+          <!-- Rite studio -->
           <div class="page page-scroll" id="page-rite" hidden>
             <div id="rite-studio" class="inspector rite-studio"></div>
           </div>
+
+          <!-- Chain -->
           <div class="page page-scroll" id="page-chain" hidden>
             <div id="chain-studio" class="inspector chain-studio"></div>
           </div>
+
+          <!-- Studio workflow canvas -->
           <div class="page page-fill" id="page-studio" hidden></div>
+
+          <!-- Deal / Project HQ -->
           <div class="page page-scroll" id="page-deal" hidden></div>
         </section>
 
