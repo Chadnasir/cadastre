@@ -1,30 +1,23 @@
-# Source tree
+# Source sync
 
-## Canonical full source
+Canonical build: `/workspace/braid/` (Cadastre v7 craft pass).
 
-The complete Cadastre SPA (including Studio) lives in:
+## GitHub
 
-- Build folder / deploy zip: all of `js/`, `css/`, `data/`, `index.html`
-- Local git commit ready to push: `/tmp/cadastre-git` (needs `gh auth` / token for `git push`)
-- Deploy zip: `/tmp/cadastre-v3.zip`
+https://github.com/Chadnasir/cadastre
 
-## Already in this repo
+Pushed via `user-GitHub-xai` MCP (`push_files` / `create_or_update_file`).
+JS on `main` may be terser-minified + `\u003c`/`\u003e` escaped for MCP transport; behavior matches braid.
 
-| Path | Status |
-|------|--------|
-| README.md / CONCEPT.md / DEPLOY.md | Full docs |
-| index.html | With Studio nav + `#/studio` host |
-| js/router.js | `#/studio` + `#/rite/:id/studio` |
-| js/editor.js | Stub — full editor in zip |
-| scripts/decode-studio.js | Reconstruct studio.js from b64 parts |
-| scripts/unpack-src.js | Reconstruct source zip from dist/_src_b64 |
+## Artifacts
 
-## Studio
+- `/tmp/cadastre-v7.zip` \u2014 deploy zip for chipper-banoffee (never Absolute)
+- `/tmp/cadastre-gh-safe/` \u2014 unicode-safe full sources for MCP
+- `/tmp/cadastre-gh-min/` \u2014 minified JS for smaller MCP pushes
 
-Route: `#/studio` (also `#/rite/:id/studio`)
+## v7 craft
 
-Nodes: MEMORY (approve-only) · KNOWLEDGE (searchIndex) · RITE · DEPOSIT (title chain) · EXPORT
-
-Screenshot: `research-shots/cadastre-studio.png` (in zip)
-
-Live: https://chipper-banoffee-49bea3.netlify.app/#/studio
+Graph: 2-hop neighborhood fade, Alt+click pin, search-highlight rings  
+Studio: named presets + deposit preview  
+Search: recent + jump-to-category  
+A11y: focus-visible + aria-current on mode nav
