@@ -1,0 +1,1 @@
+Run node scripts/decode-studio.js to regenerate js/studio.js from these parts.\n
