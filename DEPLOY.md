@@ -14,4 +14,14 @@ If CLI/MCP fail (expired token / site-id undefined → 403):
 
 ## GitHub
 Repo: https://github.com/Chadnasir/cadastre
+
 Full SPA source is in `/workspace/braid/` and `/tmp/cadastre-git/` (local commit).
+To finish pushing modules when MCP XML chokes on `<` in JS/CSS:
+
+```bash
+cd /tmp/cadastre-git
+# with gh auth or HTTPS token:
+git push origin main
+```
+
+Or unpack: `node scripts/unpack-src.js` after all `dist/_src_b64/part*.txt` land.
